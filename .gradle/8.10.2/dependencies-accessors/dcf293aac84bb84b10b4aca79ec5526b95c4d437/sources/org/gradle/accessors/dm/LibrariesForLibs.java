@@ -84,6 +84,7 @@ public class LibrariesForLibs extends AbstractExternalDependencyFactory {
         private final AndroidxCoreLibraryAccessors laccForAndroidxCoreLibraryAccessors = new AndroidxCoreLibraryAccessors(owner);
         private final AndroidxEspressoLibraryAccessors laccForAndroidxEspressoLibraryAccessors = new AndroidxEspressoLibraryAccessors(owner);
         private final AndroidxLifecycleLibraryAccessors laccForAndroidxLifecycleLibraryAccessors = new AndroidxLifecycleLibraryAccessors(owner);
+        private final AndroidxNavigationLibraryAccessors laccForAndroidxNavigationLibraryAccessors = new AndroidxNavigationLibraryAccessors(owner);
         private final AndroidxRoomLibraryAccessors laccForAndroidxRoomLibraryAccessors = new AndroidxRoomLibraryAccessors(owner);
         private final AndroidxUiLibraryAccessors laccForAndroidxUiLibraryAccessors = new AndroidxUiLibraryAccessors(owner);
 
@@ -142,6 +143,13 @@ public class LibrariesForLibs extends AbstractExternalDependencyFactory {
          */
         public AndroidxLifecycleLibraryAccessors getLifecycle() {
             return laccForAndroidxLifecycleLibraryAccessors;
+        }
+
+        /**
+         * Group of libraries at <b>androidx.navigation</b>
+         */
+        public AndroidxNavigationLibraryAccessors getNavigation() {
+            return laccForAndroidxNavigationLibraryAccessors;
         }
 
         /**
@@ -274,6 +282,36 @@ public class LibrariesForLibs extends AbstractExternalDependencyFactory {
          */
         public Provider<MinimalExternalModuleDependency> getKtx() {
             return create("androidx.lifecycle.viewmodel.ktx");
+        }
+
+    }
+
+    public static class AndroidxNavigationLibraryAccessors extends SubDependencyFactory {
+        private final AndroidxNavigationComposeLibraryAccessors laccForAndroidxNavigationComposeLibraryAccessors = new AndroidxNavigationComposeLibraryAccessors(owner);
+
+        public AndroidxNavigationLibraryAccessors(AbstractExternalDependencyFactory owner) { super(owner); }
+
+        /**
+         * Group of libraries at <b>androidx.navigation.compose</b>
+         */
+        public AndroidxNavigationComposeLibraryAccessors getCompose() {
+            return laccForAndroidxNavigationComposeLibraryAccessors;
+        }
+
+    }
+
+    public static class AndroidxNavigationComposeLibraryAccessors extends SubDependencyFactory {
+
+        public AndroidxNavigationComposeLibraryAccessors(AbstractExternalDependencyFactory owner) { super(owner); }
+
+        /**
+         * Dependency provider for <b>jvmstubs</b> with <b>androidx.navigation:navigation-compose-jvmstubs</b> coordinates and
+         * with version reference <b>navigationComposeJvmstubs</b>
+         * <p>
+         * This dependency was declared in catalog libs.versions.toml
+         */
+        public Provider<MinimalExternalModuleDependency> getJvmstubs() {
+            return create("androidx.navigation.compose.jvmstubs");
         }
 
     }
@@ -519,6 +557,16 @@ public class LibrariesForLibs extends AbstractExternalDependencyFactory {
         public Provider<String> getKotlin() { return getVersion("kotlin"); }
 
         /**
+         * Version alias <b>kotlinKapt</b> with value <b>2.0.0</b>
+         * <p>
+         * If the version is a rich version and cannot be represented as a
+         * single version string, an empty string is returned.
+         * <p>
+         * This version was declared in catalog libs.versions.toml
+         */
+        public Provider<String> getKotlinKapt() { return getVersion("kotlinKapt"); }
+
+        /**
          * Version alias <b>lifecycle</b> with value <b>2.7.0</b>
          * <p>
          * If the version is a rich version and cannot be represented as a
@@ -537,6 +585,16 @@ public class LibrariesForLibs extends AbstractExternalDependencyFactory {
          * This version was declared in catalog libs.versions.toml
          */
         public Provider<String> getLifecycleRuntimeKtx() { return getVersion("lifecycleRuntimeKtx"); }
+
+        /**
+         * Version alias <b>navigationComposeJvmstubs</b> with value <b>2.9.1</b>
+         * <p>
+         * If the version is a rich version and cannot be represented as a
+         * single version string, an empty string is returned.
+         * <p>
+         * This version was declared in catalog libs.versions.toml
+         */
+        public Provider<String> getNavigationComposeJvmstubs() { return getVersion("navigationComposeJvmstubs"); }
 
         /**
          * Version alias <b>room</b> with value <b>2.6.1</b>
@@ -611,6 +669,14 @@ public class LibrariesForLibs extends AbstractExternalDependencyFactory {
          * This plugin was declared in catalog libs.versions.toml
          */
         public Provider<PluginDependency> getCompose() { return createPlugin("kotlin.compose"); }
+
+        /**
+         * Plugin provider for <b>kotlin.kapt</b> with plugin id <b>org.jetbrains.kotlin.kapt</b> and
+         * with <b>no version specified</b>
+         * <p>
+         * This plugin was declared in catalog libs.versions.toml
+         */
+        public Provider<PluginDependency> getKapt() { return createPlugin("kotlin.kapt"); }
 
     }
 

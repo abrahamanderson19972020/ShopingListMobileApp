@@ -60,6 +60,7 @@ dependencies {
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.navigation.compose.jvmstubs)
     kapt(libs.androidx.room.compiler)
 
     //Testing
